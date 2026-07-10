@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "data-profiler-mcp"
+version = "0.1.0"
+description = "MCP server that profiles tabular data files (CSV, TSV, Parquet, Excel, JSON): schema, distributions, data-quality flags, and dtype suggestions for LLM agents."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Haibin Yu" }]
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "csv",
+    "parquet",
+    "excel",
+    "data-profiling",
+    "data-quality",
+    "pandas",
+    "claude",
+    "llm",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "mcp>=1.2.0",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "pyarrow>=14.0",
+    "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+data-profiler-mcp = "data_profiler_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/haiiibin/data-profiler-mcp"
+Repository = "https://github.com/haiiibin/data-profiler-mcp"
+Issues = "https://github.com/haiiibin/data-profiler-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/data_profiler_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
