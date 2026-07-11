@@ -119,6 +119,25 @@ def test_preview_data_caps_n(parquet_path):
     assert out["returned_rows"] <= 100
 
 
+def test_dates_stored_as_text_detected(tmp_path):
+    import pandas as pd
+
+    df = pd.DataFrame(
+        {
+            "event_time": [f"2024-01-{d:02d} 08:30:00" for d in range(1, 21)],
+            "digits": [str(20240100 + d) for d in range(1, 21)],  # numeric text, NOT dates
+        }
+    )
+    p = tmp_path / "dates.parquet"
+    df.to_parquet(p)
+    report = profiling.detect_quality_issues(str(p))
+    by_col = {(i["column"], i["issue"]) for i in report["issues"]}
+    assert ("event_time", "datetime_stored_as_text") in by_col
+    # digit strings must be flagged as numeric text, never as dates
+    assert ("digits", "datetime_stored_as_text") not in by_col
+    assert ("digits", "numeric_stored_as_text") in by_col
+
+
 def test_clean_dataset_no_false_positives(tmp_path):
     import numpy as np
     import pandas as pd

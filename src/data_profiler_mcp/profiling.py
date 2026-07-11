@@ -478,6 +478,28 @@ def _object_column_issues(s: pd.Series, col, issues: list[dict]) -> None:
             }
         )
 
+    # Dates stored as text. Only attempted when the column has no numeric
+    # values at all, so digit strings like "20240101" are never misread as dates.
+    if numeric_ratio == 0.0:
+        sample = as_str.head(500)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            try:
+                parsed = pd.to_datetime(sample, errors="coerce", format="mixed")
+            except (ValueError, TypeError):
+                parsed = None
+        if parsed is not None and len(sample) > 0:
+            rate = parsed.notna().mean()
+            if rate >= 0.95:
+                issues.append(
+                    {
+                        "column": str(col),
+                        "issue": "datetime_stored_as_text",
+                        "severity": "warning",
+                        "detail": "Values parse as dates/timestamps but the column is stored as text.",
+                    }
+                )
+
     # Leading / trailing whitespace.
     stripped_diff = int((as_str != as_str.str.strip()).sum())
     if stripped_diff > 0:

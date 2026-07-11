@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "data-profiler-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server that profiles tabular data files (CSV, TSV, Parquet, Excel, JSON): schema, distributions, data-quality flags, and dtype suggestions for LLM agents."
 readme = "README.md"
 requires-python = ">=3.10"

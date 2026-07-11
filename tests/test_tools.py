@@ -32,6 +32,21 @@ def test_every_tool_has_a_nonempty_description():
         )
 
 
+def test_max_rows_none_means_default_cap_not_unlimited():
+    from data_profiler_mcp.loaders import DEFAULT_MAX_ROWS
+
+    assert server._effective_max_rows(None) == DEFAULT_MAX_ROWS
+    assert server._effective_max_rows(0) is None  # explicit opt-out
+    assert server._effective_max_rows(-1) is None
+    assert server._effective_max_rows(50) == 50
+
+
+def test_max_rows_flows_through_tool(parquet_path):
+    result = server.profile_dataset(parquet_path, max_rows=50)
+    assert result["shape"]["rows"] == 50
+    assert result["shape"]["sampled"] is True
+
+
 def test_tool_wrappers_return_serializable(parquet_path):
     # The decorated functions remain directly callable.
     for fn, args in [
