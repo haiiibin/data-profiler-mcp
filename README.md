@@ -1,5 +1,9 @@
 # data-profiler-mcp
 
+[![PyPI](https://img.shields.io/pypi/v/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
+[![Python](https://img.shields.io/pypi/pyversions/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > An [MCP](https://modelcontextprotocol.io) server that lets an LLM understand any tabular data file: point it at a CSV, Parquet, Excel or JSON file and get schema, distributions, data-quality flags and dtype suggestions back as structured JSON.
 
 Stop pasting `df.head()` and `df.info()` into chat. Ask your assistant *"profile `sales.csv`"* and it reads the file itself, then tells you what is in it, what is wrong with it, and how to load it more efficiently.
