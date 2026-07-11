@@ -8,6 +8,8 @@
 
 Stop pasting `df.head()` and `df.info()` into chat. Ask your assistant *"profile `sales.csv`"* and it reads the file itself, then tells you what is in it, what is wrong with it, and how to load it more efficiently.
 
+![data-profiler-mcp demo: one prompt returns severity-ranked data-quality flags and a memory-saving dtype plan](docs/demo.gif)
+
 Works with **Claude Desktop**, **Claude Code**, **Cursor**, or any MCP-compatible client.
 
 ---
