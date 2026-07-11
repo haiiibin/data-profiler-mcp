@@ -1,5 +1,6 @@
 # data-profiler-mcp
 
+[![CI](https://github.com/haiiibin/data-profiler-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/haiiibin/data-profiler-mcp/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
 [![Python](https://img.shields.io/pypi/pyversions/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
