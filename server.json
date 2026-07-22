@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.haiiibin/data-profiler-mcp",
+  "description": "Profiles CSV/Parquet/Excel/JSON files: schema, stats, quality flags and dtype tips for LLM agents.",
+  "repository": {
+    "url": "https://github.com/haiiibin/data-profiler-mcp",
+    "source": "github"
+  },
+  "version": "0.1.2",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "data-profiler-mcp",
+      "version": "0.1.2",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
