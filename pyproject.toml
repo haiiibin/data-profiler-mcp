@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "data-profiler-mcp"
-version = "0.1.2"
+version = "0.1.3"
 description = "MCP server that profiles tabular data files (CSV, TSV, Parquet, Excel, JSON): schema, distributions, data-quality flags, and dtype suggestions for LLM agents."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -31,6 +31,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -43,7 +44,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
 
 [project.scripts]
 data-profiler-mcp = "data_profiler_mcp.server:main"
@@ -58,3 +59,10 @@ packages = ["src/data_profiler_mcp"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]

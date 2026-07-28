@@ -86,7 +86,7 @@ def _is_text_column(s: pd.Series) -> bool:
     so gating on ``dtype == object`` alone silently skips real text columns.
     """
     dtype = s.dtype
-    if dtype == object:
+    if pd.api.types.is_object_dtype(dtype):
         return True
     if isinstance(dtype, pd.StringDtype):
         return True
