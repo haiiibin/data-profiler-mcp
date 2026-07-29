@@ -8,7 +8,12 @@ FastMCP can read them as tool descriptions.
 
 from __future__ import annotations
 
-from mcp.server.fastmcp import FastMCP
+try:
+    # MCP SDK 2.x: FastMCP was renamed to MCPServer and the module moved.
+    from mcp.server.mcpserver import MCPServer as FastMCP
+except ImportError:
+    # MCP SDK 1.x keeps the original path.
+    from mcp.server.fastmcp import FastMCP
 
 from data_profiler_mcp import profiling
 from data_profiler_mcp.loaders import DEFAULT_MAX_ROWS

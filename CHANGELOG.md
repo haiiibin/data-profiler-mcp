@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.2.0] - 2026-07-28
+
+### Added
+
+- MCP SDK 2.x support: the server now imports `MCPServer` on SDK 2.x and falls
+  back to `FastMCP` on SDK 1.x, and the dependency pin widens to
+  `mcp>=1.2.0,<3`. Verified against both SDK lines.
+- `examples/sample.csv`: a small sales export with deliberate quality issues
+  (missing regions, a duplicate row, a constant column, whitespace padding) to
+  try the tools on.
+
 ## [0.1.4] - 2026-07-28
 
 ### Fixed
@@ -57,6 +68,7 @@ All notable changes to this project are documented here. The format follows
   Parquet, Excel, JSON and JSON Lines.
 - Terminal demo GIF and PyPI packaging.
 
+[0.2.0]: https://github.com/haiiibin/data-profiler-mcp/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/haiiibin/data-profiler-mcp/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/haiiibin/data-profiler-mcp/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/haiiibin/data-profiler-mcp/releases/tag/v0.1.2

@@ -26,3 +26,4 @@ Thumbs.db
 # Local scratch data
 scratch/
 *.local.*
+.venv-mcp2/

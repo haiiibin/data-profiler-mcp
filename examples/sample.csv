@@ -1,0 +1,22 @@
+order_id,order_date,region,amount,qty,coupon,currency,customer_email
+1001,2026-01-05,West,129.90,2,,CAD,ana.silva@example.com
+1002,2026-01-06,East,45.00,1,,CAD,ben.tran@example.com
+1003,2026-01-06,,310.50,3,NEWYEAR10,CAD,carol.wu@example.com
+1004,2026-01-07,West,89.99,1,,CAD,dev.patel@example.com
+1005,2026-01-08,North,220.00,4,,CAD,eli.brown@example.com
+1006,2026-01-09,East,17.25,1,,CAD,fay.zhang@example.com
+1007,2026-01-10,,540.10,5,,CAD,gus.moore@example.com
+1008,2026-01-11,West,73.40,2,,CAD,hana.kim@example.com
+1009,2026-01-12,South,150.00,1,WINTER5,CAD,ivan.diaz@example.com
+1010,2026-01-13,East ,66.30,1,,CAD,june.park@example.com
+1011,2026-01-14,West,99.00,2,,CAD,kai.wong@example.com
+1012,2026-01-15,,410.75,3,,CAD,lena.roy@example.com
+1013,2026-01-16,North,25.60,1,,CAD,max.lee@example.com
+1014,2026-01-17,East,180.20,2,,CAD,nina.rao@example.com
+1015,2026-01-18,West,305.00,3,,CAD,omar.ali@example.com
+1015,2026-01-18,West,305.00,3,,CAD,omar.ali@example.com
+1016,2026-01-19,South,58.90,1,,CAD,pia.chen@example.com
+1017,2026-01-20,East,112.45,2,,CAD,quin.das@example.com
+1018,2026-01-21,,77.00,1,,CAD,rosa.gil@example.com
+1019,2026-01-22,West,265.30,2,SPRING15,CAD,sam.ito@example.com
+1020,2026-01-23,North,42.10,1,,CAD,tara.nair@example.com

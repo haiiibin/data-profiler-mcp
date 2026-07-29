@@ -34,6 +34,8 @@ Six focused tools, all returning clean JSON:
 
 Supported formats: **CSV, TSV, Parquet, Excel (`.xlsx`/`.xls`), JSON and JSON Lines**. Large files are read up to a row cap and clearly flagged as sampled.
 
+No dataset at hand? [`examples/sample.csv`](examples/sample.csv) is a small sales export with deliberate quality issues (missing regions, a duplicate row, a constant column, whitespace padding) -- ask your assistant to *"profile examples/sample.csv"* and see what it flags.
+
 ---
 
 ## Install
