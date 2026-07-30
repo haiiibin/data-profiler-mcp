@@ -53,6 +53,7 @@ data-profiler-mcp = "data_profiler_mcp.server:main"
 Homepage = "https://github.com/haiiibin/data-profiler-mcp"
 Repository = "https://github.com/haiiibin/data-profiler-mcp"
 Issues = "https://github.com/haiiibin/data-profiler-mcp/issues"
+Changelog = "https://github.com/haiiibin/data-profiler-mcp/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/data_profiler_mcp"]

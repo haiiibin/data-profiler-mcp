@@ -31,3 +31,16 @@ jobs:
         run: pip install -e ".[dev]"
       - name: Test
         run: pytest -q
+
+  # The FastMCP fallback path must keep working for users still on MCP SDK 1.x.
+  test-mcp1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install (MCP SDK 1.x)
+        run: pip install -e ".[dev]" "mcp>=1.2.0,<2"
+      - name: Test
+        run: pytest -q
