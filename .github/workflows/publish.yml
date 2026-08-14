@@ -32,3 +32,36 @@ jobs:
           path: dist/
       - name: Publish (trusted publishing)
         uses: pypa/gh-action-pypi-publish@release/v1
+
+  # Publish the same version to the official MCP Registry via GitHub OIDC
+  # (no stored credentials; the io.github.haiiibin namespace is granted to
+  # workflows running in this account's repositories).
+  registry:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mcp-publisher
+        run: curl -sL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+      - name: Sync server.json version to the tag
+        run: |
+          v="${GITHUB_REF_NAME#v}"
+          jq --arg v "$v" '.version=$v | .packages[].version=$v' server.json > server.json.tmp
+          mv server.json.tmp server.json
+      - name: Wait for PyPI to serve the new version
+        run: |
+          v="${GITHUB_REF_NAME#v}"
+          for i in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "https://pypi.org/pypi/data-profiler-mcp/$v/json")
+            [ "$code" = "200" ] && exit 0
+            sleep 10
+          done
+          echo "PyPI never served version $v" >&2
+          exit 1
+      - name: Publish to MCP Registry
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish
