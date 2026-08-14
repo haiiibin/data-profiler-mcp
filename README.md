@@ -41,6 +41,8 @@ No dataset at hand? [`examples/sample.csv`](examples/sample.csv) is a small sale
 
 ## Install
 
+No install needed to try it: open the [Glama server page](https://glama.ai/mcp/servers/haiiibin/data-profiler-mcp) and use **Try in Browser** to call the tools against a sandbox (the repo ships `examples/sample.csv` at `/app/examples/sample.csv` to profile).
+
 Requires Python 3.10+.
 
 ```bash
