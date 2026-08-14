@@ -133,6 +133,32 @@ def compare_datasets(path_a: str, path_b: str, max_rows: int | None = None) -> d
     return profiling.compare_datasets(path_a, path_b, max_rows=_effective_max_rows(max_rows))
 
 
+@mcp.tool()
+def correlation_matrix(
+    path: str,
+    method: str = "pearson",
+    column: str | None = None,
+    max_rows: int | None = None,
+) -> dict:
+    """Correlations between numeric columns, ranked by strength.
+
+    Computes pairwise correlations across all numeric columns (``pearson`` by
+    default; ``spearman`` or ``kendall`` for rank-based relationships) and
+    returns pairs ranked by absolute correlation, a ``high_correlation_pairs``
+    list (|r| >= 0.9, a multicollinearity signal when preparing features for
+    modeling), and the full matrix when there are 15 or fewer numeric columns.
+    Pass ``column`` to instead rank how strongly every other numeric column
+    correlates with that one, for example a target variable. Constant columns
+    are excluded and listed.
+
+    Use this when the user is selecting features for a model, hunting
+    redundant columns, or asking what moves together with a numeric outcome.
+    """
+    return profiling.correlation_matrix(
+        path, method=method, column=column, max_rows=_effective_max_rows(max_rows)
+    )
+
+
 def main() -> None:
     """Console-script entry point: run the server over stdio."""
     mcp.run()

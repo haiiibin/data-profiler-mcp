@@ -13,6 +13,7 @@ EXPECTED_TOOLS = {
     "detect_quality_issues",
     "suggest_dtypes",
     "compare_datasets",
+    "correlation_matrix",
 }
 
 

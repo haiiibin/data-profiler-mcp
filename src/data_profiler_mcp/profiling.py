@@ -713,3 +713,96 @@ def compare_datasets(path_a, path_b, max_rows: int | None = DEFAULT_MAX_ROWS) ->
             "column_statistics": stat_changes,
         }
     )
+
+
+_CORR_METHODS = ("pearson", "spearman", "kendall")
+_HIGH_CORR_THRESHOLD = 0.9
+_MAX_PAIRS = 50
+_MATRIX_MAX_COLS = 15
+
+
+def correlation_matrix(
+    path,
+    method: str = "pearson",
+    column: str | None = None,
+    max_rows: int | None = DEFAULT_MAX_ROWS,
+) -> dict:
+    """Correlations between numeric columns, ranked by absolute strength."""
+    if method not in _CORR_METHODS:
+        raise ValueError(f"method must be one of {_CORR_METHODS}, got {method!r}")
+
+    df, fmt, truncated = load_dataframe(path, max_rows=max_rows)
+    num = df.select_dtypes(include="number")
+    constant = [str(c) for c in num.columns if num[c].nunique(dropna=True) <= 1]
+    num = num.drop(columns=constant)
+
+    if column is not None:
+        if column not in df.columns:
+            raise ValueError(
+                f"column {column!r} not found; available columns: {[str(c) for c in df.columns]}"
+            )
+        if column not in num.columns:
+            raise ValueError(
+                f"column {column!r} is not usable for correlation "
+                "(not numeric, or constant)"
+            )
+
+    base = {
+        "file": _file_meta(path, fmt),
+        "method": method,
+        "rows_used": int(len(df)),
+        "sampled": bool(truncated),
+        "columns_used": [str(c) for c in num.columns],
+        "constant_columns_excluded": constant,
+    }
+
+    if len(num.columns) < 2:
+        return _clean(
+            {
+                **base,
+                "pairs": [],
+                "high_correlation_pairs": [],
+                "matrix": None,
+                "note": "fewer than two usable numeric columns; nothing to correlate",
+            }
+        )
+
+    corr = num.corr(method=method)
+    cols = list(corr.columns)
+
+    pairs = []
+    if column is not None:
+        for other in cols:
+            if other == column:
+                continue
+            r = corr.loc[column, other]
+            if pd.isna(r):
+                continue
+            pairs.append({"column_a": str(column), "column_b": str(other), "r": _round(float(r))})
+    else:
+        for i in range(len(cols)):
+            for j in range(i + 1, len(cols)):
+                r = corr.iloc[i, j]
+                if pd.isna(r):
+                    continue
+                pairs.append({"column_a": str(cols[i]), "column_b": str(cols[j]), "r": _round(float(r))})
+    pairs.sort(key=lambda p: -abs(p["r"]))
+
+    high = [p for p in pairs if abs(p["r"]) >= _HIGH_CORR_THRESHOLD]
+
+    matrix = None
+    if column is None and len(cols) <= _MATRIX_MAX_COLS:
+        matrix = {
+            str(c): {str(k): _round(float(v)) for k, v in corr[c].items() if not pd.isna(v)}
+            for c in cols
+        }
+
+    return _clean(
+        {
+            **base,
+            "pairs": pairs[:_MAX_PAIRS],
+            "pairs_truncated": len(pairs) > _MAX_PAIRS,
+            "high_correlation_pairs": high[:_MAX_PAIRS],
+            "matrix": matrix,
+        }
+    )

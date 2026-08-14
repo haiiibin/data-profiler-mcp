@@ -4,12 +4,24 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.3.0] - 2026-08-14
 
 ### Added
 
-- `CONTRIBUTING.md` (dev setup, dual-SDK testing notes) and GitHub issue
-  templates for bug reports and feature requests.
+- New `correlation_matrix` tool: pairwise correlations across numeric columns
+  (Pearson / Spearman / Kendall) with pairs ranked by absolute strength,
+  `high_correlation_pairs` multicollinearity flags at |r| >= 0.9, an optional
+  `column` argument for target-vs-rest ranking, and the full matrix for files
+  with 15 or fewer numeric columns. Constant and non-numeric columns are
+  excluded and reported.
+- `CONTRIBUTING.md` (dev setup, dual-SDK testing notes), `CODE_OF_CONDUCT.md`,
+  `SECURITY.md`, and GitHub issue templates for bug reports and feature
+  requests.
+
+### Changed
+
+- Releases now publish to the official MCP Registry automatically on tag via
+  GitHub OIDC, alongside the existing PyPI trusted publishing.
 
 ## [0.2.0] - 2026-07-28
 

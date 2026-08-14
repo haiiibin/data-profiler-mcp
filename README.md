@@ -22,7 +22,7 @@ Works with **Claude Desktop**, **Claude Code**, **Cursor**, or any MCP-compatibl
 
 ## Features
 
-Six focused tools, all returning clean JSON:
+Seven focused tools, all returning clean JSON:
 
 | Tool | What it does |
 |---|---|
@@ -32,6 +32,7 @@ Six focused tools, all returning clean JSON:
 | `detect_quality_issues` | A data-quality audit: duplicates, high-missing and constant columns, numbers stored as text, mixed-type columns, whitespace padding, likely IDs, grouped by severity. |
 | `suggest_dtypes` | Memory-saving / type-fixing recommendations (text to numeric, low-cardinality to `category`, integer/float downcasting) with estimated savings. |
 | `compare_datasets` | Diff two files: added/removed columns, dtype changes, row-count delta, and per-column null-rate and mean side by side. |
+| `correlation_matrix` | Correlations between numeric columns (Pearson / Spearman / Kendall): pairs ranked by strength, multicollinearity flags at \|r\| >= 0.9, and target-vs-rest ranking via `column`. |
 
 Supported formats: **CSV, TSV, Parquet, Excel (`.xlsx`/`.xls`), JSON and JSON Lines**. Large files are read up to a row cap and clearly flagged as sampled.
 
