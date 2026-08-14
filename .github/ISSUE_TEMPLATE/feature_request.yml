@@ -1,0 +1,20 @@
+name: Feature request
+description: Suggest a new tool, option, or improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: >
+        Describe the workflow where the current tools fall short, e.g. a file
+        format, a statistic, or a data-quality check you are missing.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What would the tool call and its output look like?
+    validations:
+      required: true

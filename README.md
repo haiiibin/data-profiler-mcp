@@ -7,6 +7,7 @@
 [![PyPI Downloads](https://img.shields.io/pypi/dm/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
 [![Python](https://img.shields.io/pypi/pyversions/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
 [![Glama](https://glama.ai/mcp/servers/haiiibin/data-profiler-mcp/badges/score.svg)](https://glama.ai/mcp/servers/haiiibin/data-profiler-mcp)
+[![Listed in awesome-mcp-servers](https://img.shields.io/badge/awesome--mcp--servers-listed-8A2BE2)](https://github.com/punkpeye/awesome-mcp-servers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > An [MCP](https://modelcontextprotocol.io) server that lets an LLM understand any tabular data file: point it at a CSV, Parquet, Excel or JSON file and get schema, distributions, data-quality flags and dtype suggestions back as structured JSON.
