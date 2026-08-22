@@ -7,6 +7,7 @@
 [![PyPI Downloads](https://img.shields.io/pypi/dm/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
 [![Python](https://img.shields.io/pypi/pyversions/data-profiler-mcp)](https://pypi.org/project/data-profiler-mcp/)
 [![Glama](https://glama.ai/mcp/servers/haiiibin/data-profiler-mcp/badges/score.svg)](https://glama.ai/mcp/servers/haiiibin/data-profiler-mcp)
+[![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.haiiibin%2Fdata--profiler--mcp-6d4aff)](https://registry.modelcontextprotocol.io/v0/servers?search=io.github.haiiibin/data-profiler-mcp&version=latest)
 [![Listed in awesome-mcp-servers](https://img.shields.io/badge/awesome--mcp--servers-listed-8A2BE2)](https://github.com/punkpeye/awesome-mcp-servers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
