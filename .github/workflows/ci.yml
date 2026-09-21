@@ -4,6 +4,9 @@ on:
   push:
     branches: [main, master]
   pull_request:
+  schedule:
+    - cron: "0 6 * * 1"  # weekly: catch upstream (mcp SDK) breakage before users do
+  workflow_dispatch:
 
 jobs:
   lint:
