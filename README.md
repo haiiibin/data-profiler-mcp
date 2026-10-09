@@ -47,7 +47,7 @@ No install needed to try it: open the [Glama server page](https://glama.ai/mcp/s
 
 Requires Python 3.10+.
 
-Works with MCP Python SDK 1.x and 2.x (`mcp>=1.2.0,<3`): the 2.0 rename of `FastMCP` to `MCPServer` is handled by an import shim, and CI runs the test suite on both majors.
+Requires MCP Python SDK 2.x (`mcp>=2,<3`). SDK 1.x is feature-frozen upstream and no longer supported here; 0.3.0 is the last release that ran on it.
 
 ```bash
 # with uv (recommended)
@@ -161,7 +161,7 @@ Once connected, just talk to your assistant:
 
 ## How it works
 
-The server is built on [FastMCP](https://github.com/modelcontextprotocol/python-sdk) and reads files with pandas (plus pyarrow for Parquet and openpyxl for Excel). Every tool returns a plain, JSON-serializable dict, with NumPy scalars, `NaN`/`inf` and timestamps normalized so the output is safe to hand straight back to a model. Nothing is written to disk and no data leaves your machine.
+The server is built on the MCP Python SDK's [MCPServer](https://github.com/modelcontextprotocol/python-sdk) and reads files with pandas (plus pyarrow for Parquet and openpyxl for Excel). Every tool returns a plain, JSON-serializable dict, with NumPy scalars, `NaN`/`inf` and timestamps normalized so the output is safe to hand straight back to a model. Nothing is written to disk and no data leaves your machine.
 
 ---
 

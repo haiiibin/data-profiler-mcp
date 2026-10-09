@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] - 2026-10-08
+
+### Removed
+
+- MCP SDK 1.x support. The dependency pin is now `mcp>=2,<3`, the server
+  imports `mcp.server.MCPServer` directly, and the 1.x compatibility shim and
+  the `test-mcp1` CI job are gone. This follows the SDK maintainers' guidance
+  (modelcontextprotocol/python-sdk#3309): 1.x is feature-frozen at the
+  2025-11-25 protocol revision, and packages should not carry both majors.
+  0.3.0 is the last release that runs on SDK 1.x.
+
 ## [0.3.0] - 2026-08-14
 
 ### Added

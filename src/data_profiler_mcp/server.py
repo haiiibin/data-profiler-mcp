@@ -3,22 +3,17 @@
 The tool docstrings below are what the LLM sees, so they are written as guidance
 for an agent: what the tool does, when to reach for it, and what it returns.
 They are plain triple-quoted strings (never f-strings) so ``__doc__`` is set and
-FastMCP can read them as tool descriptions.
+MCPServer can read them as tool descriptions.
 """
 
 from __future__ import annotations
 
-try:
-    # MCP SDK 2.x: FastMCP was renamed to MCPServer and the module moved.
-    from mcp.server.mcpserver import MCPServer as FastMCP
-except ImportError:
-    # MCP SDK 1.x keeps the original path.
-    from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 
 from data_profiler_mcp import profiling
 from data_profiler_mcp.loaders import DEFAULT_MAX_ROWS
 
-mcp = FastMCP("data-profiler")
+mcp = MCPServer("data-profiler")
 
 
 def _effective_max_rows(max_rows: int | None) -> int | None:
